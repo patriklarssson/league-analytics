@@ -1,0 +1,56 @@
+{
+  "name": "lol-crawler",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/lol-crawler/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/lol-crawler",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/lol-crawler/src/main.ts",
+        "tsConfig": "apps/lol-crawler/tsconfig.app.json",
+        "assets": ["apps/lol-crawler/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "lol-crawler:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "lol-crawler:build:development"
+        },
+        "production": {
+          "buildTarget": "lol-crawler:build:production"
+        }
+      }
+    }
+  }
+}
