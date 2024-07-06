@@ -40,3 +40,9 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+
+
+# Data dragon
+apps/lol-crawler/src/utils/data-dragon
+
+.env
