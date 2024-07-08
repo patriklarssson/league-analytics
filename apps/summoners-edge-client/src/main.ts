@@ -1,8 +1,11 @@
 import SquirrelEvents from './app/events/squirrel.events';
 import ElectronEvents from './app/events/electron.events';
 import UpdateEvents from './app/events/update.events';
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import App from './app/app';
+import * as path from 'path';
+import * as fs from 'fs';
+import * as os from 'os';
 
 export default class Main {
   static initialize() {
@@ -18,6 +21,12 @@ export default class Main {
 
   static bootstrapAppEvents() {
     ElectronEvents.bootstrapElectronEvents();
+
+    ipcMain.handle('create-text-file', async (event, fileName) => {
+      const desktopPath = path.join(os.homedir(), 'Desktop', fileName);
+      fs.writeFileSync(desktopPath, '');
+      return `File created at ${desktopPath}`;
+    });
 
     // initialize auto updater service
     if (!App.isDevelopmentMode()) {

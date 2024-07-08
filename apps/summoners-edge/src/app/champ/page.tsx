@@ -1,5 +1,6 @@
 import axios from "axios";
 import Link from "next/link";
+import AddFile from "./_components/add-file";
 
 const Champ = async () => {
 
@@ -9,6 +10,7 @@ const Champ = async () => {
     <div>
       <h1>Champ page</h1>
       <h1>{todo.todo}</h1>
+      <AddFile/>
       <Link href="./">Go to home</Link>
     </div>
   );
