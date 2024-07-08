@@ -1,0 +1,33 @@
+{
+  "name": "summoners-edge",
+  "sourceRoot": "apps/summoners-edge/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/apps/summoners-edge"],
+      "options": {
+        "command": "next build apps/summoners-edge"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "next dev apps/summoners-edge"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "next lint apps/summoners-edge"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "next start apps/summoners-edge"
+      }
+    }
+  },
+  "tags": []
+}
