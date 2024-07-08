@@ -1,0 +1,59 @@
+{
+  "name": "summoners-edge-client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/summoners-edge-client/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx-electron:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/summoners-edge-client",
+        "main": "apps/summoners-edge-client/src/main.ts",
+        "tsConfig": "apps/summoners-edge-client/tsconfig.app.json",
+        "assets": ["apps/summoners-edge-client/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/summoners-edge-client/src/environments/environment.ts",
+              "with": "apps/summoners-edge-client/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "nx-electron:execute",
+      "options": {
+        "buildTarget": "summoners-edge-client:build"
+      }
+    },
+    "package": {
+      "executor": "nx-electron:package",
+      "options": {
+        "name": "summoners-edge-client",
+        "frontendProject": "summoners-edge",
+        "sourcePath": "dist/apps",
+        "outputPath": "dist/packages",
+        "prepackageOnly": true
+      }
+    },
+    "make": {
+      "executor": "nx-electron:make",
+      "options": {
+        "name": "summoners-edge-client",
+        "frontendProject": "summoners-edge",
+        "sourcePath": "dist/apps",
+        "outputPath": "dist/executables"
+      }
+    },
+    "lint": {
+      "command": "eslint apps/summoners-edge-client/**/*.ts"
+    }
+  }
+}
