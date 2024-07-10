@@ -4,6 +4,7 @@ import championRouter from './routes/champion-router';
 import crawlRouter from './routes/crawl-router';
 import { connectToDatabase } from './utils/db';
 import path from 'path';
+import cdnRouter from './routes/cdn-router';
 
 axios.defaults.headers.common = {
   'X-Riot-Token': 'RGAPI-341e1ef4-49aa-4b19-8a49-6835ed952a71',
@@ -19,6 +20,7 @@ app.use(express.static(assetsImgPath));
 
 app.use('/crawl', crawlRouter);
 app.use('/champion', championRouter);
+app.use('/cdn', cdnRouter);
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
