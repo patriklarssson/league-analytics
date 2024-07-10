@@ -16,7 +16,13 @@
         "bundle": false,
         "main": "apps/lol-crawler/src/main.ts",
         "tsConfig": "apps/lol-crawler/tsconfig.app.json",
-        "assets": ["apps/lol-crawler/src/assets"],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/lol-crawler/src/assets",
+            "output": "apps/lol-crawler/src/assets"
+          }
+        ],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,

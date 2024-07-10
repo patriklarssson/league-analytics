@@ -4,4 +4,5 @@ export { Queue } from './queue';
 export { Division, Tier } from './rank';
 export { Region } from './region';
 export { SummonerDTO } from './summoner-dto';
+export { ItemDTO } from './item-dto';
 export { MatchTimelineDTO, Event, EventType } from './match-timeline-dto';

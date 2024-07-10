@@ -1,4 +1,4 @@
-import { items } from '../../utils/data-dragon';
+import { getItemDataById } from '../../utils/staticFiles/data-dragon';
 import { Event, EventType, Participant, StatPerks } from '../league';
 
 type ItemTimeline = {
@@ -34,11 +34,9 @@ class ParticipantChampion {
       ({ description }) => description === 'subStyle'
     );
 
-    
-
     const itemTimeline: ItemTimeline[] = event.filter((x) => x.type === EventType.ItemPurchased).map((x) => ({
       itemId: x.itemId,
-      isFullItem: !items.data[x.itemId]?.into,
+      isFullItem: !getItemDataById(x.itemId)?.into,
       timestamp: x.timestamp
     }))
 

@@ -6,7 +6,10 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <Link href="./champ">Go to champ</Link>
+        <Link href="./champions/Sion">Sion</Link>
+        <Link href="./champions/Jinx">Jinx</Link>
+        <Link href="./champions/Nami">Nami</Link>
+        <Link href="./champions/Ornn">Ornn</Link>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>

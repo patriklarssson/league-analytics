@@ -3,13 +3,19 @@ import express from 'express';
 import championRouter from './routes/champion-router';
 import crawlRouter from './routes/crawl-router';
 import { connectToDatabase } from './utils/db';
+import path from 'path';
 
 axios.defaults.headers.common = {
-  'X-Riot-Token': 'RGAPI-c52ea4bb-a302-4dd2-8460-8f2f7c081c7f',
+  'X-Riot-Token': 'RGAPI-341e1ef4-49aa-4b19-8a49-6835ed952a71',
 };
 const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+const port = process.env.PORT ? Number(process.env.PORT) : 3200;
 const app = express();
+
+const assetsDataPath = path.join(__dirname, "assets/14.13.1/data/en_US");
+const assetsImgPath = path.join(__dirname, "assets/14.13.1/img");
+app.use(express.static(assetsDataPath));
+app.use(express.static(assetsImgPath));
 
 app.use('/crawl', crawlRouter);
 app.use('/champion', championRouter);

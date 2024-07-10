@@ -13,5 +13,3 @@ export const getChampion = async (req, res, next) => {
   const champ = await getChampionStatsByName(champion);
   res.send(champ);
 };
-
-// TODO USE FRAME TO GET ITEM AT TIME BUY https://chatgpt.com/c/d22cea58-5fee-4c6d-8901-428ac442f6d4
