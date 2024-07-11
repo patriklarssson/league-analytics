@@ -1,11 +1,11 @@
-import { Button } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
+import { Button, Paper } from '@mui/material';
 
 export default function Home() {
   return (
     <main>
-      <Button>YOOOO</Button>
+      <Paper>
+        <Button>YOOOO</Button>
+      </Paper>
     </main>
   );
 }
